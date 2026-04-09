@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Dummy model to ensure compilation. You can add your actual models here.
+model Certificate {
+  id        String   @id @default(cuid())
+  title     String
+  issuedTo  String
+  createdAt DateTime @default(now())
+}

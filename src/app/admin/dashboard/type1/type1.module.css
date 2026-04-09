@@ -1,4 +1,4 @@
-/* Type 1 Cert Upload page */
+/* Type 1 Cert Upload page — Single & Bulk tabs */
 .topbar {
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--border);
@@ -405,3 +405,280 @@
   to { transform: rotate(360deg); }
 }
 
+
+/* ── Tab bar ── */
+.tabBar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.tab:hover {
+  color: var(--foreground);
+  background: rgba(37,99,235,0.04);
+}
+
+.tabActive {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: rgba(37,99,235,0.04);
+}
+
+.tabBadge {
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 1px 6px;
+  line-height: 1.4;
+}
+
+/* ── Bulk options ── */
+.bulkOptions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ── Bulk queue list ── */
+.bulkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 340px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.bulkRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 8px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  transition: border-color 0.15s;
+}
+
+.bulkRow:hover {
+  border-color: rgba(37,99,235,0.25);
+}
+
+.bulkThumb {
+  width: 48px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.bulkInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.bulkFilename {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bulkSlugInput {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  background: var(--surface);
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.bulkSlugInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+}
+
+.bulkSlugInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bulkError {
+  font-size: 0.7rem;
+  color: #ef4444;
+}
+
+.bulkStatus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+/* QR status badges */
+.qrBadgeScanning,
+.qrBadgeFound,
+.qrBadgeMissing,
+.qrBadgeIdle {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+.qrBadgeScanning {
+  background: rgba(37,99,235,0.1);
+  color: var(--primary);
+}
+
+.qrBadgeFound {
+  background: rgba(34,197,94,0.1);
+  color: #16a34a;
+}
+
+.qrBadgeMissing {
+  background: rgba(245,158,11,0.1);
+  color: #b45309;
+}
+
+.qrBadgeIdle {
+  background: rgba(148,163,184,0.1);
+  color: #94a3b8;
+}
+
+.spinnerXS {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Per-file status icons */
+.statusPending {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.statusUploading {
+  color: var(--primary);
+}
+
+.statusDone {
+  color: #22c55e;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.statusError {
+  color: #ef4444;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.removeBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(239,68,68,0.08);
+  color: #ef4444;
+  border: none;
+  cursor: pointer;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  padding: 0;
+}
+
+.removeBtn:hover {
+  background: rgba(239,68,68,0.2);
+}
+
+/* Bulk footer bar */
+.bulkFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bulkWarning {
+  font-size: 0.78rem;
+  color: #b45309;
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 6px;
+  padding: 0.35rem 0.625rem;
+}
+
+.bulkEmpty {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.83rem;
+  padding: 1rem 0;
+}
+
+.clearBtn {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.clearBtn:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239,68,68,0.04);
+}
+
+.clearBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

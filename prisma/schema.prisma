@@ -6,10 +6,17 @@ datasource db {
   provider = "postgresql"
 }
 
-// Dummy model to ensure compilation. You can add your actual models here.
 model Certificate {
   id        String   @id @default(cuid())
   title     String
   issuedTo  String
   createdAt DateTime @default(now())
+}
+
+model Type1Cert {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  imageData   String   // base64-encoded image
+  imageMime   String   // e.g. "image/png"
+  createdAt   DateTime @default(now())
 }

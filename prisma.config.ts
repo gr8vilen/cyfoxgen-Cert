@@ -4,6 +4,6 @@ import "dotenv/config";
 // from @prisma/config if it isn't installed.
 export default {
   datasource: {
-    url: process.env.DB_URL,
+    url: process.env.DB_URL || process.env.DATABASE_URL,
   },
 };
